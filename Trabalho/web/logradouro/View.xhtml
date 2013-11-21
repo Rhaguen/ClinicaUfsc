@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewLogradouroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewLogradouroLabel_id}"/>
+                    <h:outputText value="#{logradouroController.selected.id}" title="#{bundle.ViewLogradouroTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewLogradouroLabel_cep}"/>
+                    <h:outputText value="#{logradouroController.selected.cep}" title="#{bundle.ViewLogradouroTitle_cep}"/>
+                    <h:outputText value="#{bundle.ViewLogradouroLabel_nome}"/>
+                    <h:outputText value="#{logradouroController.selected.nome}" title="#{bundle.ViewLogradouroTitle_nome}"/>
+                    <h:outputText value="#{bundle.ViewLogradouroLabel_bairroId}"/>
+                    <h:outputText value="#{logradouroController.selected.bairroId}" title="#{bundle.ViewLogradouroTitle_bairroId}"/>
+                    <h:outputText value="#{bundle.ViewLogradouroLabel_tipologradouroId}"/>
+                    <h:outputText value="#{logradouroController.selected.tipologradouroId}" title="#{bundle.ViewLogradouroTitle_tipologradouroId}"/>
+                    <h:outputText value="#{bundle.ViewLogradouroLabel_tipologradouroId1}"/>
+                    <h:outputText value="#{logradouroController.selected.tipologradouroId1}" title="#{bundle.ViewLogradouroTitle_tipologradouroId1}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{logradouroController.destroyAndView}" value="#{bundle.ViewLogradouroDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewLogradouroEditLink}"/>
+                <br />
+                <h:commandLink action="#{logradouroController.prepareCreate}" value="#{bundle.ViewLogradouroCreateLink}" />
+                <br />
+                <h:commandLink action="#{logradouroController.prepareList}" value="#{bundle.ViewLogradouroShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewLogradouroIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

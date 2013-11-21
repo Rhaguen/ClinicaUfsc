@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAxionimoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAxionimoLabel_id}"/>
+                    <h:outputText value="#{axionimoController.selected.id}" title="#{bundle.ViewAxionimoTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewAxionimoLabel_abreviacao}"/>
+                    <h:outputText value="#{axionimoController.selected.abreviacao}" title="#{bundle.ViewAxionimoTitle_abreviacao}"/>
+                    <h:outputText value="#{bundle.ViewAxionimoLabel_pronome}"/>
+                    <h:outputText value="#{axionimoController.selected.pronome}" title="#{bundle.ViewAxionimoTitle_pronome}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{axionimoController.destroyAndView}" value="#{bundle.ViewAxionimoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAxionimoEditLink}"/>
+                <br />
+                <h:commandLink action="#{axionimoController.prepareCreate}" value="#{bundle.ViewAxionimoCreateLink}" />
+                <br />
+                <h:commandLink action="#{axionimoController.prepareList}" value="#{bundle.ViewAxionimoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAxionimoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateLogradouroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateLogradouroLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{logradouroController.selected.id}" title="#{bundle.CreateLogradouroTitle_id}" />
+                    <h:outputLabel value="#{bundle.CreateLogradouroLabel_cep}" for="cep" />
+                    <h:inputText id="cep" value="#{logradouroController.selected.cep}" title="#{bundle.CreateLogradouroTitle_cep}" required="true" requiredMessage="#{bundle.CreateLogradouroRequiredMessage_cep}"/>
+                    <h:outputLabel value="#{bundle.CreateLogradouroLabel_nome}" for="nome" />
+                    <h:inputText id="nome" value="#{logradouroController.selected.nome}" title="#{bundle.CreateLogradouroTitle_nome}" required="true" requiredMessage="#{bundle.CreateLogradouroRequiredMessage_nome}"/>
+                    
+                    <h:outputLabel value="#{bundle.CreateLogradouroLabel_tipologradouroId}" for="tipologradouroId" />
+                    <h:selectOneMenu id="tipologradouroId" value="#{logradouroController.selected.tipologradouroId}" title="#{bundle.CreateLogradouroTitle_tipologradouroId}" required="true" requiredMessage="#{bundle.CreateLogradouroRequiredMessage_tipologradouroId}">
+                        <f:selectItems value="#{tipoLogradouroController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.Bairro}" for="tipologradouroId1" />
+                    <h:selectOneMenu id="tipologradouroId1" value="#{logradouroController.selected.tipologradouroId1}" title="#{bundle.CreateLogradouroTitle_tipologradouroId1}" required="true" requiredMessage="#{bundle.CreateLogradouroRequiredMessage_tipologradouroId1}">
+                        <f:selectItems value="#{bairroController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{logradouroController.create}" value="#{bundle.CreateLogradouroSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{logradouroController.prepareList}" value="#{bundle.CreateLogradouroShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateLogradouroIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

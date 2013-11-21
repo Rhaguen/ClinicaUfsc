@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListAgendamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListAgendamentoEmpty}" rendered="#{agendamentoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{agendamentoController.items.rowCount > 0}">
+                    <h:outputText value="#{agendamentoController.pagination.pageFirstItem + 1}..#{agendamentoController.pagination.pageLastItem + 1}/#{agendamentoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{agendamentoController.previous}" value="#{bundle.Previous} #{agendamentoController.pagination.pageSize}" rendered="#{agendamentoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{agendamentoController.next}" value="#{bundle.Next} #{agendamentoController.pagination.pageSize}" rendered="#{agendamentoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{agendamentoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAgendamentoTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAgendamentoTitle_formaPagamento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.formaPagamento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAgendamentoTitle_dataHora}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataHora}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAgendamentoTitle_valorCobrado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valorCobrado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAgendamentoTitle_pago}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pago}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAgendamentoTitle_dataPagamento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataPagamento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAgendamentoTitle_cadastradoPor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cadastradoPor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAgendamentoTitle_profissionalespecialidadeId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.profissionalespecialidadeId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAgendamentoTitle_pacienteplanoId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pacienteplanoId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{agendamentoController.prepareView}" value="#{bundle.ListAgendamentoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{agendamentoController.prepareEdit}" value="#{bundle.ListAgendamentoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{agendamentoController.destroy}" value="#{bundle.ListAgendamentoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{agendamentoController.prepareCreate}" value="#{bundle.ListAgendamentoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListAgendamentoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>View</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+        <h2>View Dados Agenda Profissional</h2>
+        <h:form>
+
+            
+            
+            <p:dataTable value="#{pacienteController.viewDadosAgendaProfissional}" var="pac" lazy="true" rows="200"
+                         >
+
+                <p:column headerText="especialidade_id"  filterBy="especialidade_id">
+                    #{pac[0]}
+                </p:column>
+
+                <p:column headerText="especialidade" filterBy="especialidade">
+                    #{pac[1]}
+                </p:column>
+
+                <p:column headerText="profissional_id" filterBy="profissional_id">
+                    #{pac[2]}
+                </p:column>
+
+                <p:column headerText="id" filterBy="id">
+                    #{pac[3]}
+                </p:column>
+
+                <p:column headerText="nome" filterBy="nome">
+                    #{pac[4]}
+                </p:column>
+
+                <p:column headerText="rg" filterBy="rg">
+                    #{pac[5]}
+                </p:column>
+
+                <p:column headerText="cpf" filterBy="cpf">
+                    #{pac[6]}
+                </p:column>
+
+                <p:column headerText="nacionalidade" filterBy="nacionalidade">
+                    #{pac[7]}
+                </p:column>
+
+                <p:column headerText="nascimento" filterBy="nascimento">
+                    #{pac[8]}
+                </p:column>
+
+                <p:column headerText="sexo" filterBy="sexo">
+                    #{pac[9]}
+                </p:column>
+                
+                <p:column headerText="abreviacao" filterBy="abreviacao">
+                    #{pac[10]}
+                </p:column>
+                
+                <p:column headerText="descricao" filterBy="descricao">
+                    #{pac[11]}
+                </p:column>
+
+                <p:column headerText="diaDaSemana" filterBy="diaDaSemana">
+                    #{pac[13]}
+                </p:column>
+
+                <p:column headerText="inicioExpediente" filterBy="inicioExpediente">
+                    #{pac[14]}
+                </p:column>
+
+
+
+                <p:column headerText="fimExpediente" filterBy="fimExpediente">
+                    #{pac[15]}
+                </p:column>
+
+
+                <p:column headerText="inicioIntervalo" filterBy="inicioIntervalo">
+                    #{pac[16]}
+                </p:column>
+
+
+            </p:dataTable>
+            
+            <p:messages autoUpdate="true" globalOnly="false" />
+            
+        </h:form>
+
+        <h:link outcome="/index" value="#{bundle.ListPacienteIndexLink}"/>
+
+    </h:body>
+</html>
+

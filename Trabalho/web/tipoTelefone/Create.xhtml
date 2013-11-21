@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTipoTelefoneTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTipoTelefoneLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{tipoTelefoneController.selected.id}" title="#{bundle.CreateTipoTelefoneTitle_id}" />
+                    <h:outputLabel value="#{bundle.CreateTipoTelefoneLabel_descricao}" for="descricao" />
+                    <h:inputText id="descricao" value="#{tipoTelefoneController.selected.descricao}" title="#{bundle.CreateTipoTelefoneTitle_descricao}" required="true" requiredMessage="#{bundle.CreateTipoTelefoneRequiredMessage_descricao}"/>
+                    <h:outputLabel value="#{bundle.CreateTipoTelefoneLabel_observacao}" for="observacao" />
+                    <h:inputText id="observacao" value="#{tipoTelefoneController.selected.observacao}" title="#{bundle.CreateTipoTelefoneTitle_observacao}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tipoTelefoneController.create}" value="#{bundle.CreateTipoTelefoneSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{tipoTelefoneController.prepareList}" value="#{bundle.CreateTipoTelefoneShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTipoTelefoneIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

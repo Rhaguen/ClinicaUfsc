@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateProfissionalEspecialidadeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateProfissionalEspecialidadeLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{profissionalEspecialidadeController.selected.id}" title="#{bundle.CreateProfissionalEspecialidadeTitle_id}" />
+                    <h:outputLabel value="#{bundle.CreateProfissionalEspecialidadeLabel_profissionalId}" for="profissionalId" />
+                    <h:selectOneMenu id="profissionalId" value="#{profissionalEspecialidadeController.selected.profissionalId}" title="#{bundle.CreateProfissionalEspecialidadeTitle_profissionalId}" required="true" requiredMessage="#{bundle.CreateProfissionalEspecialidadeRequiredMessage_profissionalId}">
+                        <f:selectItems value="#{profissionalController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateProfissionalEspecialidadeLabel_especialidadeId}" for="especialidadeId" />
+                    <h:selectOneMenu id="especialidadeId" value="#{profissionalEspecialidadeController.selected.especialidadeId}" title="#{bundle.CreateProfissionalEspecialidadeTitle_especialidadeId}" required="true" requiredMessage="#{bundle.CreateProfissionalEspecialidadeRequiredMessage_especialidadeId}">
+                        <f:selectItems value="#{especialidadeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{profissionalEspecialidadeController.create}" value="#{bundle.CreateProfissionalEspecialidadeSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{profissionalEspecialidadeController.prepareList}" value="#{bundle.CreateProfissionalEspecialidadeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateProfissionalEspecialidadeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

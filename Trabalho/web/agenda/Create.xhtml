@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateAgendaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateAgendaLabel_diaDaSemana}" for="diaDaSemana" />
+                    <h:selectOneMenu id="diaDaSemana" value="#{agendaController.selected.diaDaSemana}" >
+                        <f:selectItems value="#{agendaController.comboDiasDaSemana}" />
+                    </h:selectOneMenu>
+                   
+                    <h:outputLabel value="#{bundle.CreateAgendaLabel_inicioExpediente}" for="inicioExpediente" />
+                    <h:inputText id="inicioExpediente" value="#{agendaController.selected.inicioExpediente}" title="#{bundle.CreateAgendaTitle_inicioExpediente}" required="true" requiredMessage="#{bundle.CreateAgendaRequiredMessage_inicioExpediente}">
+                        <f:convertDateTime pattern="HH:mm" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateAgendaLabel_fimExpediente}" for="fimExpediente" />
+                    <h:inputText id="fimExpediente" value="#{agendaController.selected.fimExpediente}" title="#{bundle.CreateAgendaTitle_fimExpediente}" required="true" requiredMessage="#{bundle.CreateAgendaRequiredMessage_fimExpediente}" >
+                        <f:convertDateTime pattern="HH:mm" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateAgendaLabel_inicioIntervalo}" for="inicioIntervalo" />
+                    <h:inputText id="inicioIntervalo" value="#{agendaController.selected.inicioIntervalo}" title="#{bundle.CreateAgendaTitle_inicioIntervalo}" >
+                        <f:convertDateTime pattern="HH:mm" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateAgendaLabel_fimIntervalo}" for="fimIntervalo" />
+                    <h:inputText id="fimIntervalo" value="#{agendaController.selected.fimIntervalo}" title="#{bundle.CreateAgendaTitle_fimIntervalo}" >
+                        <f:convertDateTime pattern="HH:mm" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateAgendaLabel_profissionalId}" for="profissionalId" />
+                    <h:selectOneMenu id="profissionalId" value="#{agendaController.selected.profissionalId}" title="#{bundle.CreateAgendaTitle_profissionalId}" >
+                        <f:selectItems value="#{profissionalController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{agendaController.create}" value="#{bundle.CreateAgendaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{agendaController.prepareList}" value="#{bundle.CreateAgendaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateAgendaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAgendamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAgendamentoLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{agendamentoController.selected.id}" title="#{bundle.EditAgendamentoTitle_id}" />
+                    <h:outputLabel value="#{bundle.CreateAgendamentoLabel_pacienteplanoId}" for="pacienteplanoId" />
+                    <h:selectOneMenu id="pacienteplanoId" value="#{agendamentoController.selected.pacienteplanoId}" title="#{bundle.CreateAgendamentoTitle_pacienteplanoId}" required="true" requiredMessage="#{bundle.CreateAgendamentoRequiredMessage_pacienteplanoId}">
+                        <f:selectItems value="#{pacientePlanoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                     
+                    <h:outputLabel value="#{bundle.CreateAgendamentoLabel_dataHora}" for="dataHora" />
+                    <h:inputText id="dataHora" value="#{agendamentoController.selected.dataHora}" title="#{bundle.CreateAgendamentoTitle_dataHora}" required="true" requiredMessage="#{bundle.CreateAgendamentoRequiredMessage_dataHora}" >
+                        <f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+                    </h:inputText>
+                    
+                    <h:outputLabel value="#{bundle.CreateAgendamentoLabel_valorCobrado}" for="valorCobrado" />
+                    <h:inputText id="valorCobrado" value="#{agendamentoController.selected.valorCobrado}" title="#{bundle.CreateAgendamentoTitle_valorCobrado}" />
+                    
+                    <h:outputLabel value="#{bundle.CreateAgendamentoLabel_pago}" for="pago" />
+                    <p:selectBooleanCheckbox id="pago" value="#{agendamentoController.selected.pago}"  />
+                    
+                    <h:outputLabel value="#{bundle.CreateAgendamentoLabel_dataPagamento}" for="dataPagamento" />
+                    <h:inputText id="dataPagamento" value="#{agendamentoController.selected.dataPagamento}" title="#{bundle.CreateAgendamentoTitle_dataPagamento}" >
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:inputText>
+                    
+                    <h:outputLabel value="#{bundle.CreateAgendamentoLabel_cadastradoPor}" for="cadastradoPor" />
+                    <h:selectOneMenu id="cadastradoPor" value="#{agendamentoController.selected.cadastradoPor}" title="#{bundle.CreateAgendamentoTitle_cadastradoPor}" required="true" requiredMessage="#{bundle.CreateAgendamentoRequiredMessage_cadastradoPor}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    
+                    <h:outputLabel value="#{bundle.CreateAgendamentoLabel_profissionalespecialidadeId}" for="profissionalespecialidadeId" />
+                    <h:selectOneMenu id="profissionalespecialidadeId" value="#{agendamentoController.selected.profissionalespecialidadeId}" title="#{bundle.CreateAgendamentoTitle_profissionalespecialidadeId}" required="true" requiredMessage="#{bundle.CreateAgendamentoRequiredMessage_profissionalespecialidadeId}">
+                        <f:selectItems value="#{profissionalEspecialidadeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    
+                    <h:outputLabel value="#{bundle.CreateAgendamentoLabel_formaPagamento}" for="formaPagamento" />
+                    <h:selectOneMenu id="formaPagamento" value="#{agendamentoController.selected.formaPagamento}" title="#{bundle.CreateAgendamentoTitle_formaPagamento}" required="true" requiredMessage="#{bundle.CreateAgendamentoRequiredMessage_formaPagamento}">
+                        <f:selectItems value="#{agendamentoController.comboFormaPagamento}" />
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{agendamentoController.update}" value="#{bundle.EditAgendamentoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAgendamentoViewLink}"/>
+                <br />
+                <h:commandLink action="#{agendamentoController.prepareList}" value="#{bundle.EditAgendamentoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAgendamentoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

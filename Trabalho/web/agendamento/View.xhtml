@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAgendamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAgendamentoLabel_id}"/>
+                    <h:outputText value="#{agendamentoController.selected.id}" title="#{bundle.ViewAgendamentoTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewAgendamentoLabel_formaPagamento}"/>
+                    <h:outputText value="#{agendamentoController.selected.formaPagamento}" title="#{bundle.ViewAgendamentoTitle_formaPagamento}"/>
+                    <h:outputText value="#{bundle.ViewAgendamentoLabel_dataHora}"/>
+                    <h:outputText value="#{agendamentoController.selected.dataHora}" title="#{bundle.ViewAgendamentoTitle_dataHora}"/>
+                    <h:outputText value="#{bundle.ViewAgendamentoLabel_valorCobrado}"/>
+                    <h:outputText value="#{agendamentoController.selected.valorCobrado}" title="#{bundle.ViewAgendamentoTitle_valorCobrado}"/>
+                    <h:outputText value="#{bundle.ViewAgendamentoLabel_pago}"/>
+                    <h:outputText value="#{agendamentoController.selected.pago}" title="#{bundle.ViewAgendamentoTitle_pago}"/>
+                    <h:outputText value="#{bundle.ViewAgendamentoLabel_dataPagamento}"/>
+                    <h:outputText value="#{agendamentoController.selected.dataPagamento}" title="#{bundle.ViewAgendamentoTitle_dataPagamento}"/>
+                    <h:outputText value="#{bundle.ViewAgendamentoLabel_cadastradoPor}"/>
+                    <h:outputText value="#{agendamentoController.selected.cadastradoPor}" title="#{bundle.ViewAgendamentoTitle_cadastradoPor}"/>
+                    <h:outputText value="#{bundle.ViewAgendamentoLabel_profissionalespecialidadeId}"/>
+                    <h:outputText value="#{agendamentoController.selected.profissionalespecialidadeId}" title="#{bundle.ViewAgendamentoTitle_profissionalespecialidadeId}"/>
+                    <h:outputText value="#{bundle.ViewAgendamentoLabel_pacienteplanoId}"/>
+                    <h:outputText value="#{agendamentoController.selected.pacienteplanoId}" title="#{bundle.ViewAgendamentoTitle_pacienteplanoId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{agendamentoController.destroyAndView}" value="#{bundle.ViewAgendamentoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAgendamentoEditLink}"/>
+                <br />
+                <h:commandLink action="#{agendamentoController.prepareCreate}" value="#{bundle.ViewAgendamentoCreateLink}" />
+                <br />
+                <h:commandLink action="#{agendamentoController.prepareList}" value="#{bundle.ViewAgendamentoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAgendamentoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

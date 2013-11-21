@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPacientePlanoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditPacientePlanoLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{pacientePlanoController.selected.id}" title="#{bundle.EditPacientePlanoTitle_id}" />
+                    <h:outputLabel value="#{bundle.EditPacientePlanoLabel_vencimento}" for="vencimento" />
+                    <h:inputText id="vencimento" value="#{pacientePlanoController.selected.vencimento}" title="#{bundle.EditPacientePlanoTitle_vencimento}" />
+                    <h:outputLabel value="#{bundle.EditPacientePlanoLabel_matricula}" for="matricula" />
+                    <h:inputText id="matricula" value="#{pacientePlanoController.selected.matricula}" title="#{bundle.EditPacientePlanoTitle_matricula}" />
+                    <h:outputLabel value="#{bundle.EditPacientePlanoLabel_planoId}" for="planoId" />
+                    <h:selectOneMenu id="planoId" value="#{pacientePlanoController.selected.planoId}" title="#{bundle.EditPacientePlanoTitle_planoId}" required="true" requiredMessage="#{bundle.EditPacientePlanoRequiredMessage_planoId}">
+                        <f:selectItems value="#{planoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPacientePlanoLabel_pacienteId}" for="pacienteId" />
+                    <h:selectOneMenu id="pacienteId" value="#{pacientePlanoController.selected.pacienteId}" title="#{bundle.EditPacientePlanoTitle_pacienteId}" required="true" requiredMessage="#{bundle.EditPacientePlanoRequiredMessage_pacienteId}">
+                        <f:selectItems value="#{pacienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{pacientePlanoController.update}" value="#{bundle.EditPacientePlanoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditPacientePlanoViewLink}"/>
+                <br />
+                <h:commandLink action="#{pacientePlanoController.prepareList}" value="#{bundle.EditPacientePlanoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditPacientePlanoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

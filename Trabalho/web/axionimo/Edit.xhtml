@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAxionimoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAxionimoLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{axionimoController.selected.id}" title="#{bundle.EditAxionimoTitle_id}" />
+                    <h:outputLabel value="#{bundle.EditAxionimoLabel_abreviacao}" for="abreviacao" />
+                    <h:inputText id="abreviacao" value="#{axionimoController.selected.abreviacao}" title="#{bundle.EditAxionimoTitle_abreviacao}" required="true" requiredMessage="#{bundle.EditAxionimoRequiredMessage_abreviacao}"/>
+                    <h:outputLabel value="#{bundle.EditAxionimoLabel_pronome}" for="pronome" />
+                    <h:inputText id="pronome" value="#{axionimoController.selected.pronome}" title="#{bundle.EditAxionimoTitle_pronome}" required="true" requiredMessage="#{bundle.EditAxionimoRequiredMessage_pronome}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{axionimoController.update}" value="#{bundle.EditAxionimoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAxionimoViewLink}"/>
+                <br />
+                <h:commandLink action="#{axionimoController.prepareList}" value="#{bundle.EditAxionimoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAxionimoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

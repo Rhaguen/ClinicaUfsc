@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPessoaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPessoaLabel_id}"/>
+                    <h:outputText value="#{pessoaController.selected.id}" title="#{bundle.ViewPessoaTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_nome}"/>
+                    <h:outputText value="#{pessoaController.selected.nome}" title="#{bundle.ViewPessoaTitle_nome}"/>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_rg}"/>
+                    <h:outputText value="#{pessoaController.selected.rg}" title="#{bundle.ViewPessoaTitle_rg}"/>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_foto}"/>
+                    <h:outputText value="#{pessoaController.selected.foto}" title="#{bundle.ViewPessoaTitle_foto}"/>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_cpf}"/>
+                    <h:outputText value="#{pessoaController.selected.cpf}" title="#{bundle.ViewPessoaTitle_cpf}"/>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_nacionalidade}"/>
+                    <h:outputText value="#{pessoaController.selected.nacionalidade}" title="#{bundle.ViewPessoaTitle_nacionalidade}"/>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_nascimento}"/>
+                    <h:outputText value="#{pessoaController.selected.nascimento}" title="#{bundle.ViewPessoaTitle_nascimento}"/>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_sexo}"/>
+                    <h:outputText value="#{pessoaController.selected.sexo}" title="#{bundle.ViewPessoaTitle_sexo}"/>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_usuarioId}"/>
+                    <h:outputText value="#{pessoaController.selected.usuarioId}" title="#{bundle.ViewPessoaTitle_usuarioId}"/>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_estadocivilId}"/>
+                    <h:outputText value="#{pessoaController.selected.estadocivilId}" title="#{bundle.ViewPessoaTitle_estadocivilId}"/>
+                    <h:outputText value="#{bundle.ViewPessoaLabel_axionimoId}"/>
+                    <h:outputText value="#{pessoaController.selected.axionimoId}" title="#{bundle.ViewPessoaTitle_axionimoId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pessoaController.destroyAndView}" value="#{bundle.ViewPessoaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPessoaEditLink}"/>
+                <br />
+                <h:commandLink action="#{pessoaController.prepareCreate}" value="#{bundle.ViewPessoaCreateLink}" />
+                <br />
+                <h:commandLink action="#{pessoaController.prepareList}" value="#{bundle.ViewPessoaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPessoaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
